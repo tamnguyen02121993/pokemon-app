@@ -1,0 +1,85 @@
+@use "./variables" as *;
+@use "./mixin" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* Rules for sizing the icon. */
+.material-icons-outlined.md-18 {
+  font-size: 18px;
+}
+.material-icons-outlined.md-24 {
+  font-size: 24px;
+}
+.material-icons-outlined.md-36 {
+  font-size: 36px;
+}
+.material-icons-outlined.md-48 {
+  font-size: 48px;
+}
+
+/* Rules for using icons as black on a light background. */
+.material-icons-outlined.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+.material-icons-outlined.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+.material-icons-outlined.md-light {
+  color: rgba(255, 255, 255, 1);
+}
+.material-icons-outlined.md-light.md-inactive {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5rem;
+}
+
+body {
+  background-image: linear-gradient(120deg, #ffafbd, #ffc3a0);
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  outline: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+
+  @include tablet {
+    max-width: 800px;
+  }
+
+  @include mobile {
+    max-width: 600;
+  }
+}
+
+.card {
+  background: $white;
+  box-shadow: 2px 2px 1px 0 rgba($color: #000000, $alpha: 0.3);
+  height: 300px;
+}
