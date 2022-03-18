@@ -46,15 +46,27 @@ html {
 }
 
 body {
-  background-image: linear-gradient(120deg, #ffafbd, #ffc3a0);
+  // background-image: linear-gradient(120deg, #ffafbd, #ffc3a0);
+  background-repeat: no-repeat;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 img {
   width: 100%;
+  object-fit: cover;
 }
 
 a {
   text-decoration: none;
+  cursor: pointer;
+  color: $text-color;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #888;
+  }
 }
 
 ul {
@@ -63,23 +75,45 @@ ul {
 
 button {
   outline: none;
+  border: none;
+}
+
+input {
+  outline: none;
+  border: none;
 }
 
 .container {
   width: 100%;
   max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 $padding36;
 
   @include tablet {
     max-width: 800px;
+    padding: 0 $padding24;
   }
 
   @include mobile {
     max-width: 600;
+    padding: 0 $padding24;
   }
 }
 
 .card {
   background: $white;
-  box-shadow: 2px 2px 1px 0 rgba($color: #000000, $alpha: 0.3);
-  height: 300px;
+  box-shadow: $boxShadow;
+  width: 100%;
+  position: relative;
+  border-radius: 8px;
+  padding: $padding36;
+
+  @include tablet {
+    padding: $padding24;
+  }
+
+  @include mobile {
+    padding: $padding24;
+  }
 }
