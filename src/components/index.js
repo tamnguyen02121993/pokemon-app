@@ -5,6 +5,7 @@ import PokemonList from "./PokemonList.vue";
 import PokemonItem from "./PokemonItem.vue";
 import Button from "./Button.vue";
 import Input from "./Input.vue";
+import Modal from "./Modal.vue";
 import MainLayout from "./layouts/MainLayout.vue";
 import ErrorLayout from "./layouts/ErrorLayout.vue";
 
@@ -16,6 +17,7 @@ export {
   PokemonItem,
   Button,
   Input,
+  Modal,
   MainLayout,
   ErrorLayout,
 };

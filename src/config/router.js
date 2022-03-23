@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { Home, Detail } from "../pages";
-import { MainLayout } from "../components";
+const MainLayout = () => import("../components/layouts/MainLayout.vue");
+const ErrorLayout = () => import("../components/layouts/ErrorLayout.vue");
+const Home = () => import("../pages/Home.vue");
+const Detail = () => import("../pages/Detail.vue");
+const NotFound = () => import("../pages/NotFound.vue");
 
 const routes = [
   {
@@ -14,11 +17,22 @@ const routes = [
         alias: ["home", "homepage", "index"],
       },
       {
-        path: "/detail/:id",
+        path: "detail/:id",
         name: "detail",
         props: true,
         component: Detail,
-        alias: ["/profile/:id", "/:id"],
+        alias: ["/profile/:id"],
+      },
+    ],
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    component: ErrorLayout,
+    children: [
+      {
+        path: "",
+        name: "notfound",
+        component: NotFound,
       },
     ],
   },

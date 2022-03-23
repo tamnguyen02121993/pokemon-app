@@ -16,7 +16,7 @@ export function buildImagePath(id) {
 
 export const pokemonApi = {
   fetchPokemonList: async () => {
-    const { results } = await httpClient.get("/pokemon?limit=300");
+    const { results } = await httpClient.get("/pokemon?limit=20");
     const computedResult = results.map((x) => {
       const id = extractId(x.url);
       return {

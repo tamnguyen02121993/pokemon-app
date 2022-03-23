@@ -22,7 +22,7 @@ function handleSelectThemeItem(theme) {
 <template>
   <Teleport to="body">
     <div :class="['theme__icon', { 'active': isOpening }]" @click="handleOpenThemeManage">
-      <span class="material-icons-outlined md-36">settings</span>
+      <ion-icon name="settings-outline" class="icon-36px"></ion-icon>
     </div>
     <div :class="['theme__container', { 'active': isOpening }]">
       <h4 class="theme__name">{{ themeName }}</h4>
@@ -45,7 +45,7 @@ function handleSelectThemeItem(theme) {
 .theme {
   $width: 300px;
   $height: 300px;
-  $bottom: 20px;
+  $bottom: 40px;
   $shadow: rgba(0, 0, 0, 0.3) 0px 3px;
 
   &__container {
@@ -62,6 +62,9 @@ function handleSelectThemeItem(theme) {
     flex-direction: column;
     border-top-left-radius: 4px;
     box-shadow: $shadow;
+    @include mobile {
+      display: none;
+    }
 
     &.active {
       transform: translateX(0);
@@ -79,7 +82,11 @@ function handleSelectThemeItem(theme) {
     background: $white;
     transform: translateX($width);
     transition: transform 0.3s ease;
-    & > span {
+    @include mobile {
+      display: none;
+    }
+
+    & .icon-36px {
       cursor: pointer;
       transform: rotate(0deg);
       transition: transform 0.3s ease;

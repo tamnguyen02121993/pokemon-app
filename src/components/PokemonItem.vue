@@ -13,6 +13,10 @@ const props = defineProps({
     imageUrls: {
         type: Object,
         required: true
+    },
+    mode: {
+        type: String,
+        required: true
     }
 });
 
@@ -22,7 +26,7 @@ const props = defineProps({
     <div class="card pokemon">
         <div class="pokemon__content">
             <router-link :to="{ name: 'detail', params: { id: props.id } }">
-                <img :src="props.imageUrls.home" :alt="props.name" />
+                <img :src="props.imageUrls[props.mode]" :alt="props.name" />
             </router-link>
             <div class="pokemon__info">
                 <router-link :to="{ name: 'detail', params: { id: props.id } }">
@@ -36,6 +40,10 @@ const props = defineProps({
 <style lang="scss" scoped>
 @import "../assets/scss/index.scss";
 .pokemon {
+    &:hover {
+        background-color: #f2f2f2;
+    }
+
     &__content {
         display: flex;
         flex-direction: column;
