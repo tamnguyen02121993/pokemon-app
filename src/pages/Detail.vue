@@ -65,7 +65,7 @@ function handleBackBtnClick() {
                         </ul>
                     </span>
                 </div>
-                <Button @click="handleBackBtnClick" class="detail__btn">Back</Button>
+                <Button @click="handleBackBtnClick" class="detail__btn" theme-button>Back</Button>
             </div>
         </div>
     </div>

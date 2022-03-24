@@ -97,7 +97,6 @@ const router = useRouter();
 }
 
 .go-home-btn {
-    $bg: #f22439;
     margin-top: 30px;
     display: inline-block;
     padding: 12px 20px;
@@ -108,9 +107,9 @@ const router = useRouter();
     color: $white;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: $bg;
+    background-color: $red;
     &:hover {
-        background-color: rgba($color: $bg, $alpha: 0.8);
+        background-color: rgba($color: $red, $alpha: 0.8);
     }
 }
 </style>

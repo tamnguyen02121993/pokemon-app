@@ -1,9 +1,8 @@
 <script setup>
 import { ref, onMounted, reactive } from "vue";
-import { PokemonItem, Input } from "./"
-import { pokemonApi } from "../services";
-const pokemonList = ref([]);
-const filterList = ref([]);
+import { PokemonItem, Input, Button } from "./"
+import { usePokemonStore } from "../store"
+const pokemonStore = usePokemonStore();
 const modes = reactive([
     {
         value: 'home',
@@ -25,18 +24,17 @@ const modes = reactive([
 const mode = ref('home');
 
 onMounted(async () => {
-    const data = await pokemonApi.fetchPokemonList();
-    pokemonList.value = data;
-    filterList.value = data;
+    await pokemonStore.fetchPokemonList();
 })
 
 function handleSearchPokemon(event) {
-    if (event.target.value === "") {
-        filterList.value = pokemonList.value;
-        return;
-    }
+    pokemonStore.$patch(state => {
+        state.search = event.target.value;
+    })
+}
 
-    filterList.value = pokemonList.value.filter(x => x.name.includes(event.target.value))
+async function handleLoadMorePokemon() {
+    await pokemonStore.fetchMorePokemon();
 }
 </script>
 
@@ -59,13 +57,16 @@ function handleSearchPokemon(event) {
         </div>
         <div class="pokemon-list">
             <PokemonItem
-                v-for="pokemon in filterList"
+                v-for="pokemon in pokemonStore.filteredPokemonList"
                 :key="pokemon.name"
                 :name="pokemon.name"
                 :id="pokemon.id"
                 :image-urls="pokemon.imageUrls"
                 :mode="mode"
             ></PokemonItem>
+        </div>
+        <div class="load-more">
+            <Button @click="handleLoadMorePokemon">Load more</Button>
         </div>
     </div>
 </template>
@@ -121,5 +122,8 @@ function handleSearchPokemon(event) {
             margin-left: 8px;
         }
     }
+}
+.load-more {
+    @include flex(center, center);
 }
 </style>
