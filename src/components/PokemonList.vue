@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, reactive } from "vue";
+import { onMounted, reactive, inject } from "vue";
 import { PokemonItem, Input, Button } from "./"
 import { usePokemonStore } from "../store"
 const pokemonStore = usePokemonStore();
@@ -21,7 +21,10 @@ const modes = reactive([
         text: 'Official Artwork'
     }
 ]);
-const mode = ref('home');
+
+const { mode, updateImageMode } = inject('image-mode');
+
+// const mode = ref('home');
 
 onMounted(async () => {
     await pokemonStore.fetchPokemonList();
@@ -36,6 +39,10 @@ function handleSearchPokemon(event) {
 async function handleLoadMorePokemon() {
     await pokemonStore.fetchMorePokemon();
 }
+
+function handleChangeImageMode(e) {
+    updateImageMode(e.target.value)
+}
 </script>
 
 <template>
@@ -48,8 +55,8 @@ async function handleLoadMorePokemon() {
                         type="radio"
                         name="mode"
                         :value="m.value"
-                        v-model="mode"
                         :checked="mode === m.value"
+                        @change="handleChangeImageMode"
                     ></Input>
                     <span>{{ m.text }}</span>
                 </span>

@@ -6,6 +6,7 @@ import PokemonItem from "./PokemonItem.vue";
 import Button from "./Button.vue";
 import Input from "./Input.vue";
 import Modal from "./Modal.vue";
+import ImageZoom from "./ImageZoom.vue";
 import MainLayout from "./layouts/MainLayout.vue";
 import ErrorLayout from "./layouts/ErrorLayout.vue";
 
@@ -18,6 +19,7 @@ export {
   Button,
   Input,
   Modal,
+  ImageZoom,
   MainLayout,
   ErrorLayout,
 };
