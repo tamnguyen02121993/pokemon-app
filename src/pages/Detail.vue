@@ -35,12 +35,12 @@ function handleBackBtnClick() {
 <template>
     <div v-if="Boolean(pokemonDetail)" class="container">
         <div class="card detail">
-            <!-- <img
+            <img
                 class="detail__image"
                 :src="pokemonDetail.imageUrls[mode]"
                 :alt="pokemonDetail.name"
-            />-->
-            <ImageZoom class="detail__image" :image-url="pokemonDetail.imageUrls[mode]"></ImageZoom>
+            />
+            <!-- <ImageZoom class="detail__image" :image-url="pokemonDetail.imageUrls[mode]"></ImageZoom> -->
             <div class="detail__content">
                 <div class="detail__info">
                     <span class="detail__field">Name:</span>

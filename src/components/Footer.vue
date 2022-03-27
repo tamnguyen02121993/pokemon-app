@@ -194,12 +194,6 @@ function handleOpenModal(type) {
 .contact {
     @include flex(flex-start, flex-start);
     flex-direction: column;
-    // @include tablet {
-    //     overflow-x: auto;
-    // }
-    // @include mobile {
-    //     overflow-x: auto;
-    // }
     &__info {
         @include flex(flex-start, flex-start);
         @include mobile {

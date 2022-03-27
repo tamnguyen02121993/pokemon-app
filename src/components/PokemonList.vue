@@ -24,8 +24,6 @@ const modes = reactive([
 
 const { mode, updateImageMode } = inject('image-mode');
 
-// const mode = ref('home');
-
 onMounted(async () => {
     await pokemonStore.fetchPokemonList();
 })
