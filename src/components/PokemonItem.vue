@@ -26,7 +26,10 @@ const props = defineProps({
     <div class="card pokemon">
         <div class="pokemon__content">
             <router-link :to="{ name: 'detail', params: { id: props.id } }">
-                <img :src="props.imageUrls[props.mode]" :alt="props.name" />
+                <div
+                    class="pokemon__image"
+                    :style="{ backgroundImage: `url(${props.imageUrls[props.mode]})` }"
+                ></div>
             </router-link>
             <div class="pokemon__info">
                 <router-link :to="{ name: 'detail', params: { id: props.id } }">
@@ -48,7 +51,7 @@ const props = defineProps({
         display: flex;
         flex-direction: column;
 
-        & img {
+        & > a {
             flex-shrink: 0;
             transform: scale(1);
             transition: transform 0.3s ease;
@@ -58,8 +61,17 @@ const props = defineProps({
             }
         }
     }
+
+    &__image {
+        padding-top: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
     &__info {
         flex: 1;
+        margin-top: auto;
         padding-top: $padding24;
     }
 
